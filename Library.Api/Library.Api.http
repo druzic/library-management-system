@@ -1,6 +1,32 @@
 @Library.Api_HostAddress = http://localhost:5087
 
-GET {{Library.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### Get all authors
+GET {{Library.Api_HostAddress}}/authors
 
-###
+### Create a new author
+POST {{Library.Api_HostAddress}}/authors
+Content-Type: application/json
+
+{
+	"firstName": "Mirko",
+	"lastName": "Peric",
+	"dateOfBirth": "1985-04-12",
+	"biography": "Test author for API verification."
+}
+
+### Get an author by id
+GET {{Library.Api_HostAddress}}/authors/2
+
+### Update an author by id
+PUT {{Library.Api_HostAddress}}/authors/2
+Content-Type: application/json
+
+{
+	"firstName": "Mirko",
+	"lastName": "Peric Updated",
+	"dateOfBirth": "1985-04-12",
+	"biography": "Updated biography for testing."
+}
+
+### Delete an author by id
+DELETE {{Library.Api_HostAddress}}/authors/2

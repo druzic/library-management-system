@@ -10,7 +10,7 @@
 
         public string? Biography { get; set; }
 
-        public DateTime? DateOfBirth { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
 
         public List<Book> Books { get; set; } = [];
     }

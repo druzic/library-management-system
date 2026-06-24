@@ -1,14 +1,16 @@
 using Library.Api.Data;
+using Library.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddValidation();
-
-var connString = "Data Source=Library.db";
-builder.Services.AddSqlite<LibraryContext>(connString);
+builder.AddLibraryDb();
 
 var app = builder.Build();
 
 
+app.MigrateDb();
+
+app.MapAuthorsEndpoints();
 
 app.Run();
