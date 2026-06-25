@@ -1,24 +1,24 @@
-@Library.Api_HostAddress = http://localhost:5087
+@LibraryApi_HostAddress = http://localhost:5087
 
 ### Get all authors
-GET {{Library.Api_HostAddress}}/authors
+GET {{LibraryApi_HostAddress}}/authors
 
 ### Create a new author
-POST {{Library.Api_HostAddress}}/authors
+POST {{LibraryApi_HostAddress}}/authors
 Content-Type: application/json
 
 {
-	"firstName": "Mirko",
-	"lastName": "Peric",
+	"firstName": "Krešo",
+	"lastName": "Krešić",
 	"dateOfBirth": "1985-04-12",
 	"biography": "Test author for API verification."
 }
 
 ### Get an author by id
-GET {{Library.Api_HostAddress}}/authors/2
+GET {{LibraryApi_HostAddress}}/authors/6
 
 ### Update an author by id
-PUT {{Library.Api_HostAddress}}/authors/2
+PUT {{LibraryApi_HostAddress}}/authors/2
 Content-Type: application/json
 
 {
@@ -29,4 +29,20 @@ Content-Type: application/json
 }
 
 ### Delete an author by id
-DELETE {{Library.Api_HostAddress}}/authors/2
+DELETE {{LibraryApi_HostAddress}}/authors/5
+
+### Genres
+
+### Get all genres
+GET {{LibraryApi_HostAddress}}/genres
+
+### Create a new genre
+POST {{LibraryApi_HostAddress}}/genres
+Content-Type: application/json
+
+{
+	"name": "Sci-Fi"
+}
+
+### Get a genre by id
+GET {{LibraryApi_HostAddress}}/genres/1

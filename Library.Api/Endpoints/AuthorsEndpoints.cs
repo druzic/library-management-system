@@ -14,7 +14,21 @@ public static class AuthorsEndpoints
         //GET /authors
         group.MapGet(
             "/",
-            async (LibraryContext dbContext) => await dbContext.Authors.AsNoTracking().ToListAsync()
+            async (LibraryContext dbContext) =>
+            {
+                var authors = await dbContext
+                    .Authors.AsNoTracking()
+                    .Select(a => new AuthorDto(
+                        a.Id,
+                        a.FirstName,
+                        a.LastName,
+                        a.Biography,
+                        a.DateOfBirth
+                    ))
+                    .ToListAsync();
+
+                return Results.Ok(authors);
+            }
         );
 
         //GET /authors/1
@@ -25,7 +39,15 @@ public static class AuthorsEndpoints
                 {
                     var author = await dbContext
                         .Authors.AsNoTracking()
-                        .FirstOrDefaultAsync(x => x.Id == id);
+                        .Where(a => a.Id == id)
+                        .Select(a => new AuthorDto(
+                            a.Id,
+                            a.FirstName,
+                            a.LastName,
+                            a.Biography,
+                            a.DateOfBirth
+                        ))
+                        .FirstOrDefaultAsync();
 
                     if (author is null)
                         return Results.NotFound();
@@ -56,8 +78,8 @@ public static class AuthorsEndpoints
                     author.Id,
                     author.FirstName,
                     author.LastName,
-                    author.DateOfBirth,
-                    author.Biography
+                    author.Biography,
+                    author.DateOfBirth
                 );
 
                 return Results.CreatedAtRoute("GetAuthor", new { id = author.Id }, authorDto);

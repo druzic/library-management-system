@@ -8,9 +8,9 @@ builder.AddLibraryDb();
 
 var app = builder.Build();
 
-
 app.MigrateDb();
 
 app.MapAuthorsEndpoints();
+app.MapGenresEndpoints();
 
 app.Run();

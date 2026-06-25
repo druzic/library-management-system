@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Dtos\Authors\" />
+    <Folder Include="Dtos\Genres\" />
     <Folder Include="Endpoints\" />
   </ItemGroup>
 
