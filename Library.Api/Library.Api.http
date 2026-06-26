@@ -1,48 +1,98 @@
-@LibraryApi_HostAddress = http://localhost:5087
+@baseUrl = http://localhost:5087
+@authorId = 1
+@genreId = 1
+@bookId = 1
+
+### Authors
 
 ### Get all authors
-GET {{LibraryApi_HostAddress}}/authors
+GET {{baseUrl}}/authors
 
 ### Create a new author
-POST {{LibraryApi_HostAddress}}/authors
+POST {{baseUrl}}/authors
 Content-Type: application/json
 
 {
-	"firstName": "Krešo",
-	"lastName": "Krešić",
-	"dateOfBirth": "1985-04-12",
-	"biography": "Test author for API verification."
+  "firstName": "Krešo",
+  "lastName": "Krešić",
+  "dateOfBirth": "1985-04-12",
+  "biography": "Test author for API verification."
 }
 
 ### Get an author by id
-GET {{LibraryApi_HostAddress}}/authors/6
+GET {{baseUrl}}/authors/{{authorId}}
 
 ### Update an author by id
-PUT {{LibraryApi_HostAddress}}/authors/2
+PUT {{baseUrl}}/authors/{{authorId}}
 Content-Type: application/json
 
 {
-	"firstName": "Mirko",
-	"lastName": "Peric Updated",
-	"dateOfBirth": "1985-04-12",
-	"biography": "Updated biography for testing."
+  "firstName": "Mirko",
+  "lastName": "Peric Updated",
+  "dateOfBirth": "1985-04-12",
+  "biography": "Updated biography for testing."
 }
 
 ### Delete an author by id
-DELETE {{LibraryApi_HostAddress}}/authors/5
+DELETE {{baseUrl}}/authors/{{authorId}}
 
 ### Genres
 
 ### Get all genres
-GET {{LibraryApi_HostAddress}}/genres
+GET {{baseUrl}}/genres
 
 ### Create a new genre
-POST {{LibraryApi_HostAddress}}/genres
+POST {{baseUrl}}/genres
 Content-Type: application/json
 
 {
-	"name": "Sci-Fi"
+  "name": "Sci-Fi"
 }
 
 ### Get a genre by id
-GET {{LibraryApi_HostAddress}}/genres/1
+GET {{baseUrl}}/genres/{{genreId}}
+
+### Books
+
+### Get all books
+GET {{baseUrl}}/books
+
+### Create a new book
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "title": "Dune",
+  "isbn": "9780441013593",
+  "description": "Classic science fiction novel.",
+  "publisher": "Ace",
+  "publishedYear": 1965,
+  "pageCount": 688,
+  "language": "English",
+  "availableCopies": 5,
+  "authorId": {{authorId}},
+  "genreId": {{genreId}}
+}
+
+### Get a book by id
+GET {{baseUrl}}/books/{{bookId}}
+
+### Update a book by id
+PUT {{baseUrl}}/books/{{bookId}}
+Content-Type: application/json
+
+{
+  "title": "Dune Messiah",
+  "isbn": "9780441172696",
+  "description": "Second book in the Dune series.",
+  "publisher": "Ace",
+  "publishedYear": 1969,
+  "pageCount": 304,
+  "language": "English",
+  "availableCopies": 3,
+  "authorId": {{authorId}},
+  "genreId": {{genreId}}
+}
+
+### Delete a book by id
+DELETE {{baseUrl}}/books/{{bookId}}

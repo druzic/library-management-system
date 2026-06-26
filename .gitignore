@@ -208,3 +208,8 @@ FakesAssemblies/
 
 # JetBrains Rider
 *.sln.iml
+
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3

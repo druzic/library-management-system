@@ -12,5 +12,6 @@ app.MigrateDb();
 
 app.MapAuthorsEndpoints();
 app.MapGenresEndpoints();
+app.MapBooksEndpoints();
 
 app.Run();
